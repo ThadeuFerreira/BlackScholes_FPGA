@@ -7,6 +7,7 @@
 #include <time.h>
 #include <iostream>
 #include <string>
+#include <cmath>
 
 #include "CL/opencl.h"
 #include "AOCLUtils/opencl.h"
@@ -208,8 +209,12 @@ int main(int argc, char *argv[] )
         {
            double _output = data[i];
            //printf("%.8f -- %.8f\n", _output, WELLRNG512a());
-           accum += _output;
-           
+           if(std::isnan(_output)){
+               printf("NAN!!\n");
+           }
+           else{
+              accum += _output; 
+           }   
         } 
         free(data);
         printf("passou 1\n");
@@ -296,10 +301,13 @@ int main(int argc, char *argv[] )
         for (int i = 0; i < *final_size; ++i)
         {
            double _output = data2[i];
-           //printf("%.8f -- %.8f\n", _output, WELLRNG512a());
-           //printf ("%.9f\n", _output);
+           if(std::isnan(_output)){
+               printf("NAN 2!!\n");
+               accum2 += 0.0;
+           }
+           else{
            accum2 += _output;
-           
+           }
         } 
         printf("final size = %d\n", *final_size);
         printf("Total Hard = %.9f\n", accum);
