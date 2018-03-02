@@ -309,6 +309,9 @@ int main(int argc, char *argv[] )
         free(data);
         free(data2);
         free(box_output);
+        //free(box_result_buffer);
+        //free(final_size_buffer);
+        free(input_buffer);
        
 
     }
